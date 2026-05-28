@@ -1,1 +1,1 @@
-# total_synch
+# PSRC: Total Luminosity
