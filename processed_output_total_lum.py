@@ -1,5 +1,5 @@
 '''
-This code reads radial dependent magnetizer properties and computes total synchrotron luminosity 
+This code reads radial-dependent magnetizer properties and computes total synchrotron luminosity 
 along with other global galaxy properties.
 '''
 import h5py
@@ -12,7 +12,7 @@ from scipy import integrate
 from astropy.cosmology import WMAP9 as cosmo
 
 #volume - stores total cosmological volume of files
-#filenos - files numbers of galform/magnetizer outputs to be used
+#filenos - file numbers of galform/magnetizer outputs to be used
 #v_ay - array for storing cosmological volumes of each file
 global volume, filenos, v_ay
 
@@ -26,7 +26,7 @@ m_km   = 10**3
 m_cm   = 10**(-2)
 V0     = 25 #unit: km/s
 m_H    = 1.67372*10**(-24)# unit: g
-# calulating zeta
+# calculating zeta
 fb     = 1
 xi     = (3/2)*fb**2
 eps    = 1
@@ -34,10 +34,10 @@ zeta   =(1+xi+xi*eps)/3 # taking from LC's "pressure" note
 erg_j  = 10**(-7)
 pi     = 3.14156295358
 ###################################################
-#The number density or pdfs are contructed at these redshifts specified by by "z_ay"
+#The number density or PDFs are constructed at these redshifts specified by "z_ay"
 z_ay     =[0.001]#,0.5,1.0,1.5,2.0,3.0]#,1.5,2.0]#, 3.0]
 
-#The pdfs are contructed using these file numbers 
+#The PDFs are constructed using these file numbers 
 filenos      = range(5,6,1)
 
 #Input File paths of galform  magnetizer and observable runs 
@@ -268,14 +268,14 @@ for fno in filenos:
                 else:
                     f_b = 1
                     
-            elif f_b_profile == 3: # Large-scale tangling : model 3 (continuous profile)
+            elif f_b_profile == 3: # Large-scale tangling: model 3 (continuous profile)
                     if beta0_rms[igal] <= 1:
                         f_b = beta0_rms[igal]
                     else:
                         f_b = 1
                     
             elif f_b_profile == 4: # constant profile
-                f_b = 0.9
+                f_b = 0.8
                 
             else:
                 print("choose f_b profile")
@@ -283,7 +283,8 @@ for fno in filenos:
 # -----------------------------------------------------------------------------------------            
             
             
-         # Calculating Polarized Intensity and total synchrotron intensities
+         # Calculating total synchrotron intensities
+            
             B_bar_avg[igal]   = (np.trapz((B_sq1/B_total_sq1)*h1*r1*(1-np.exp(-2)),r1)/np.trapz(2*h1*r1,r1))**0.5
 #             B_total_avg[igal] =(np.trapz((B_total_sq1)*(1-np.exp(-2))*h1*r1,r1)/np.trapz(2*h1*r1,r1))**0.5
             B_total_avg[igal] =(np.trapz((np.sqrt(B_total_sq1)**4)*(1-np.exp(-4))*h1*r1,r1)/np.trapz(2*h1*r1,r1))**(1/4)
@@ -308,7 +309,7 @@ for fno in filenos:
 
 ###############################################################################################################################################
 ######################################## SYNCHROTRON LUMINOSITY & INTENSITY ###################################################################
-            # constants (in CGS unit):
+            # constants (in CGS units):
             e       = 4.8032 *10**(-10)  # cm^(3/2) g^(1/2) s^(−1) : electron charge in statcolumb
             m_e     = 9.1094 * 10**(-28) # g : mass of electron
             c       = 2.9979 * 10**10    # cm/s : speed of light
@@ -327,9 +328,9 @@ for fno in filenos:
             
             # parameters:
             s    = 3.0   # spectral index of relativistic electron energy spectrum in the Solar vicinity (ss21 fig 10.10)
-            E    = 8.0   # GeV : minimun or threshold energy of relativistic electron energy spectrum in the Solar vicinity (ss21 fig 10.10)
+            E    = 8.0   # GeV: minimum or threshold energy of relativistic electron energy spectrum in the Solar vicinity (ss21 fig 10.10)
             k_cr = 100.0 # the ratio of the energy densities of the relativistic protons and electrons
-            nu   = 4.8 # GHz : frequency at which synchrotron intensity is measured (Tabatabaei+2016)
+            nu   = 4.8   # GHz: frequency at which synchrotron intensity is measured
             
             # Galaxy Parameters
             rd = np.max(r1)       # Disk radius
@@ -340,7 +341,7 @@ for fno in filenos:
             i = np.arccos(1 - np.random.uniform(0.0, 1))#np.arcsin(random.uniform(0.0, 1))           
             
             # Absolute Magnitude Distance
-            d    = 10.0  # Mpc : distance of the galaxy from earth : 
+            d    = 10.0  # Mpc: distance of the galaxy
             
             # Luminosity Distance
             d_L1  = cosmo.luminosity_distance(0.02)# from Astropy  
@@ -348,9 +349,9 @@ for fno in filenos:
                     (Omega_m-2)*(np.sqrt(Omega_m*redshift +1)-1)) # Mpc
 #             print("distance",d_L1)
             
-            # visible area of the galaxy at i inclination
+            # visible area of the galaxy at an inclination i
             gal_area = np.pi*(np.max(r1))**2*np.cos(i)
-            # Solid angle created on telescope
+            # Solid angle created on the telescope
             sigma = gal_area/d**2
             
             # mean magnetic field as a function of r
@@ -364,7 +365,7 @@ for fno in filenos:
             
             K_E   = ((s-2)/(8*np.pi*k_cr)) * (B_T*muG_G)**2 * (E*GeV_erg)**(s-2) # particles cm^-3 erg^(s-1): B and E are in muG & GeV respectively 
 
-            # with out equipartition
+            # without equipartition
 #             K_E   = ((s-2)/(k_cr)) * (E*GeV_erg)**(s-2) # particles cm^-3 erg^(s-1): B and E are in muG & GeV respectively 
             
             
@@ -405,7 +406,7 @@ for fno in filenos:
 
                 Br_rz = Br_r * np.exp(-np.abs(Z) / h_r)
                 Bp_rz = Bp_r * np.exp(-np.abs(Z) / h_r)
-                # computing Bz profile from Del.B = 0 (for exponentially decaying profile of Br)
+                # computing Bz profile from Del. B = 0 (for exponentially decaying profile of Br)
                 Bz_rz = sign_z * ((Br_r/r_clamped + delBr_delr_r) 
                                   * h_r * (np.exp(-np.abs(Z) / h_r) - 1)
                                   + Br_r * delh_delr_r 
@@ -420,7 +421,7 @@ for fno in filenos:
                 By = (Br_rz*np.sin(PHI)*np.cos(i) 
                       + Bp_rz*np.cos(PHI)*np.cos(i) 
                       + Bz_rz*np.sin(i))
-                # Mean-field componant perpendicular to LoS
+                # Mean-field component perpendicular to LoS
                 B_perp_LoS = np.sqrt(Bx**2 + By**2)
                 
 #                 # alternative approch to compute the perpendicular comp. of mean-field to LoS
@@ -553,20 +554,14 @@ for fno in filenos:
             iR2, R2 = find_nearest(r[igal,:],  (r[igal,:][-1]*2.5)/2.7 )
             Ur_R2[igal]   = Ur[igal, iR2] #Ur[igal,:][:iR]
 
-         # Extract the slice of Ur between 1.5*r_half and 2.5*r_half to compute the value of Ur for the flat part of rotation curve
+         # Extract the slice of Ur between 1.5*r_half and 2.5*r_half to compute the value of Ur for the flat part of the rotation curve
             Ur_slice = Ur[igal, iR1:iR2+1]
 
-         # Compute the average of Ur over the flat part of rotaion curve
+         # Compute the average of Ur over the flat part of the rotation curve
             Ur_avg1 = np.mean(Ur_slice)
 
          # Assign the average to Ur_R
             Ur_avg[igal] = Ur_avg1
-         
- #        B_rms_rhalf[igal]   = ( np.sum( B_sq1*h1*r1*dr1 ) / np.sum(r1*h1*dr1) )**0.5
- #        Beq_rms_rhalf[igal] = ( np.sum( Beq_sq1*h1*r1*dr1 ) / np.sum(r1*h1*dr1) )**0.5
-#             B_rms_rhalf[igal] = ( np.trapz(B_sq1*h1*r1, r1)/np.trapz(h1*r1, r1) )**0.5
-#             Beq_rms_rhalf[igal] = ( np.trapz(Beq_sq1*h1*r1, r1)/np.trapz(h1*r1, r1) )**0.5
-#             beta0_rms_rhalf[igal] = ( np.trapz(beta0_sq1*h1*r1, r1)/np.trapz(h1*r1, r1) )**0.5
       
       
       #Brms_orig = np.concatenate( (Brms_orig,B_rms[:,iz]) )
