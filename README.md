@@ -1,2 +1,2 @@
-# PSRC: Total Luminosity
+# GPS-RC: Total Luminosity
 This will be updated soon...
