@@ -1,2 +1,2 @@
-# GPS-RC: Total Luminosity
+# MAGNETIZER-RC: Total Luminosity
 This will be updated soon...
