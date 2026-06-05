@@ -3,46 +3,48 @@
 ## Overview
 
 `processed_output.py` processes outputs from the
-[MAGNETIZER](https://github.com/luizfelippesr/magnetizer) galaxy magnetic field model and computes the radio continuum observables of simulated galaxies, specifically their total synchrotron luminosity.
+[MAGNETIZER](https://github.com/luizfelippesr/magnetizer) and computes the radio continuum observable (e.g. total synchrotron luminosity) for simulated galaxies.
 
 The script also incorporates outputs from the
-[GALFORM](https://ui.adsabs.harvard.edu/abs/2000MNRAS.319..168C/abstract) semi-analytic model (SAM) of galaxy formation. By combining the information from both models, it generates catalogues of galaxy properties together with their radio synchrotron luminosities at a chosen redshift.
+[GALFORM](https://ui.adsabs.harvard.edu/abs/2000MNRAS.319..168C/abstract) semi-analytic model (SAM) of galaxy formation, which provides the galaxy catalogues and associated physical properties used as inputs to MAGNETIZER. By combining the outputs from both models, it generates catalogues of galaxy properties together with their synchrotron luminosities at any chosen redshift up to \(z=3\).
 
 ## Inputs
 
-- MAGNETIZER output files containing the magnetic field and galaxy evolution information.
-- GALFORM output files containing the corresponding galaxy properties.
+- GALFORM output files containing galaxy catalogues and their physical properties.
+- MAGNETIZER output files containing the corresponding magnetic field evolution and related quantities.
 
 ## Outputs
 
-The script produces processed galaxy catalogues that include:
+The script computes the radio continuum synchrotron luminosity and generates processed galaxy catalogues containing:
 
 - Galaxy physical properties from GALFORM.
-- Radio continuum synchrotron luminosities computed from MAGNETIZER.
-- Additional quantities required for statistical analyses.
+- Magnetic-field quantities from MAGNETIZER.
+- Computed radio continuum luminosities.
 
 ## Applications
 
-The processed catalogues can be used for:
+The processed catalogues can be used to perform statistical analyses using the scripts provided in the `plot_scripts/` directory, including:
 
 - Studying correlations between galaxy properties and radio luminosity.
 - Constructing radio luminosity functions (RLFs) at different redshifts.
 - Comparing model predictions with observational data.
-- Generating figures and analyses using the scripts provided in the `plot_scripts/` directory.
-
+  
 ## Workflow
 
 ```text
-GALFORM Outputs
-       │
-       ▼
-MAGNETIZER Outputs
-       │
-       ▼
- processed_output.py
-       │
-       ▼
- Processed Galaxy Catalogues
-       │
-       ├── Galaxy Property–Radio Luminosity Correlations
-       └── Radio Luminosity Functions (RLFs)
+GALFORM Outputs -----------\
+                            \
+                             +--> processed_output.py
+                            /        |
+MAGNETIZER Outputs --------/         |
+                                     |
+                                     |
+                                     v
+                        Processed Galaxy Catalogues
+                                |
+                                +--> Galaxy Property–Radio Luminosity Correlations
+                                |
+                                +--> Radio Luminosity Functions (RLFs)
+```
+
+
