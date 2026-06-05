@@ -1,4 +1,4 @@
-# MAGNETIZER-RC: Total Radio Continuum Luminosity
+# MAGNETIZER-RC: Total Synchrotron Luminosity
 
 ## Overview
 
