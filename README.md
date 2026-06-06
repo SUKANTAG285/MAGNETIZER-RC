@@ -18,7 +18,7 @@ The script also incorporates outputs from the
 The script computes the radio continuum synchrotron luminosity and generates processed galaxy catalogues containing:
 
 - Galaxy physical properties from GALFORM.
-- Magnetic-field quantities from MAGNETIZER.
+- Magnetic-field quantities from [MAGNETIZER](https://github.com/luizfelippesr/magnetizer).
 - Computed radio continuum luminosities.
 
 ## Applications
