@@ -24,7 +24,12 @@ The code has been tested with the following software:
 - h5py
 - matplotlib
 - astropy
+- 
+## Quick Run
 
+```bash
+python processed_output.py
+```
 
 ## Inputs
 
