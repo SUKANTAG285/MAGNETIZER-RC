@@ -8,7 +8,7 @@ This code processes outputs from the
 [MAGNETIZER](https://github.com/luizfelippesr/magnetizer) and computes the radio continuum observable (e.g. total synchrotron luminosity) for simulated galaxies. (Click the link to access the GitHub page for the [MAGNETIZER](https://github.com/luizfelippesr/magnetizer) code.)
 
 The script also incorporates outputs from the
-[GALFORM](https://ui.adsabs.harvard.edu/abs/2000MNRAS.319..168C/abstract) semi-analytic model (SAM) of galaxy formation, which provides the galaxy catalogues and associated physical properties used as inputs to MAGNETIZER. By combining the outputs from both models, it generates catalogues of galaxy properties together with their synchrotron luminosities at any chosen redshift up to z=3.
+[GALFORM](https://ui.adsabs.harvard.edu/abs/2000MNRAS.319..168C/abstract) semi-analytic model (SAM) of galaxy formation, which provides the galaxy catalogues and associated physical properties used as inputs to MAGNETIZER. By combining the outputs from both models, it generates catalogues of galaxy properties together with their synchrotron luminosities at any chosen redshift up to $z=3$.
 
 ## Software Requirements
 
