@@ -1,4 +1,5 @@
 [![arXiv](https://img.shields.io/badge/arXiv-2606.01957-b31b1b.svg)](https://doi.org/10.48550/arXiv.2606.01957)
+[![DOI](https://zenodo.org/badge/1247269318.svg)](https://doi.org/10.5281/zenodo.21840409)
 
 # MAGNETIZER-RC: Total Synchrotron Luminosity
 
