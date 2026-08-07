@@ -64,7 +64,7 @@ The processed catalogues can be used to perform statistical analyses using the s
 ```text
 GALFORM Outputs -----------\
                             \
-                             +--> processed_output.py
+                             +--> MAGNETIZER-RC
                             /        |
 MAGNETIZER Outputs --------/         |
                                      |
