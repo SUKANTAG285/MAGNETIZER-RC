@@ -1,0 +1,7 @@
+numpy==1.24.3
+scipy==1.11.1
+pandas==1.5.2
+h5py==3.9.0
+matplotlib==3.9.2
+astropy==5.1
+tqdm==4.67.1
