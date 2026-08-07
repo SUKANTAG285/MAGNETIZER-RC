@@ -4,7 +4,7 @@
 
 ## Overview
 
-`processed_output.py` processes outputs from the
+This code processes outputs from the
 [MAGNETIZER](https://github.com/luizfelippesr/magnetizer) and computes the radio continuum observable (e.g. total synchrotron luminosity) for simulated galaxies. (Click the link to access the GitHub page for the [MAGNETIZER](https://github.com/luizfelippesr/magnetizer) code.)
 
 The script also incorporates outputs from the
@@ -24,10 +24,11 @@ The code has been tested with the following software:
 - h5py
 - matplotlib
 - astropy
-- 
+
 ## Quick Run
 
 ```bash
+cd source
 python processed_output.py
 ```
 
