@@ -25,6 +25,12 @@ The code has been tested with the following software:
 - matplotlib
 - astropy
 
+Install the required Python packages with
+
+```bash
+pip install -r requirements.txt
+```
+
 ## Quick Run
 
 ```bash
